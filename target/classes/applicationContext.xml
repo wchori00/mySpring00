@@ -6,15 +6,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<context:component-scan base-package="tommy.spring.web"></context:component-scan>
+	
+<!--	<bean id="userService" class="tommy.spring.web.user.impl.UserServiceImpl">
+		<property name="userDAO" ref="userDAO"/>
+	</bean>
+	<bean id="userDAO" class="tommy.spring.web.user.impl.UserDAO"></bean> -->
+
 <!--	<context:component-scan base-package="tommy.spring.polymorphism"></context:component-scan>
 	<bean id="sonny" class="tommy.spring.polymorphism.SonySpeaker"/> -->
 	<!-- @Component 어노테이션이 부여된 Class들은 자동으로 IOC Container에 Bean으로 동록이 된다 -->
 
-	<bean id="myLifeBean" class="tommy.spring.lifecycle.MyLifeBeanImpl" init-method="init">
+<!--	<bean id="myLifeBean" class="tommy.spring.lifecycle.MyLifeBeanImpl" init-method="init">
 		<property name="greeting"><value>Hello, </value></property>
 	</bean>
 	
-	<bean class="tommy.spring.lifecycle.CustomBeanPostProcessor"/>
+	<bean class="tommy.spring.lifecycle.CustomBeanPostProcessor"/> -->
 
 <!--	<bean id="collectionBean" class="tommy.spring.collection.CollectionBean">
 		<property name="addressList"> -->

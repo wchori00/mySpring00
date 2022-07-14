@@ -32,7 +32,14 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-				
+		
+		<!-- 오라클 드라이버 -->
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc11</artifactId>
+			<version>21.6</version>
+		</dependency>
+		
 		<!-- AspectJ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
