@@ -23,5 +23,4 @@ public class UserServiceClient {
 		// 4. 스프링 컨테이너 종료
 		container.close();
 	}
-
 }
