@@ -3,6 +3,7 @@
 <%@ page import="tommy.spring.web.board.impl.BoardDAO" %>
 <%@ page import="tommy.spring.web.board.BoardVO" %>
 <%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	
 
@@ -51,18 +52,29 @@
 <th>등록일</th>
 <th>조회수</th>
 </tr>
-<% for(BoardVO board: boardList) { %>
+
+<c:forEach var="board" items="${boardList }">
 <tr>
-<td><%=board.getSeq() %></td>
-<td>
-<%-- <a href="getBoard.jsp?seq=<%=board.getSeq() %>"><%=board.getTitle() %></a> --%>
-<a href="getBoard.do?seq=<%=board.getSeq()%>"><%=board.getTitle()%></a>
-</td>
-<td><%=board.getWriter() %></td>
-<td><%=board.getRegDate()%></td>
-<td><%=board.getCnt() %></td>
+<td>${board.seq }</td>
+<td><a href="getBoard.do?seq=${board.seq }">${board.title }</a></td>
+<td>${board.writer }</td>
+<td>${board.regDate }</td>
+<td>${board.cnt }</td>
 </tr>
-<%} %>
+</c:forEach>
+
+<%-- <% for(BoardVO board: boardList) { %> --%>
+<!-- <tr> -->
+<%-- <td><%=board.getSeq() %></td> --%>
+<!-- <td> -->
+<%-- <%-- <a href="getBoard.jsp?seq=<%=board.getSeq() %>"><%=board.getTitle() %></a> --%>
+<%-- <a href="getBoard.do?seq=<%=board.getSeq()%>"><%=board.getTitle()%></a> --%>
+<!-- </td> -->
+<%-- <td><%=board.getWriter() %></td> --%>
+<%-- <td><%=board.getRegDate()%></td> --%>
+<%-- <td><%=board.getCnt() %></td> --%>
+<!-- </tr> -->
+<%-- <%} %> --%>
 </table><br/>
 <a href="insertBoard.jsp">새글 작성</a>
 </body>
