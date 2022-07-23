@@ -29,6 +29,6 @@
 </tr>
 </table>
 </form><hr>
-<a href="getBoardList.jsp">글 목록으로 가기</a>
+<a href="getBoardList.do">글 목록으로 가기</a>
 </body>
 </html>

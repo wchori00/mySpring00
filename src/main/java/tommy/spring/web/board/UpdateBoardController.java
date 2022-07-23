@@ -3,12 +3,15 @@ package tommy.spring.web.board;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import tommy.spring.web.board.impl.BoardDAO;
-import tommy.spring.web.controller.Controller;
 
 public class UpdateBoardController implements Controller {
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+//	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		// 1. 사용자 입력 정보 추출
 		//request.setCharacterEncoding("UTF-8");
 		String title = request.getParameter("title");
@@ -25,6 +28,10 @@ public class UpdateBoardController implements Controller {
 		boardDAO.updateBoard(vo);
 		
 		// 3. 화면 네비게이션
-		return "getBoardList.do";
+		ModelAndView mav = new ModelAndView();
+//		mav.setViewName("getBoardList.do");
+		mav.setViewName("redirect:getBoardList.do");
+		return mav;
+//		return "getBoardList.do";
 	}
 }
