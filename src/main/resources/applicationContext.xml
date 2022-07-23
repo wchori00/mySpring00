@@ -120,7 +120,6 @@
 <!--		</property>
 	</bean> -->
 
-
 <!-- 	<bean id="tv" class="tommy.spring.polymorphism.SamsungTV" p:speaker-ref="sony" p:price="280000"/> -->
 <!--		<constructor-arg ref="apple"></constructor-arg>
  		<constructor-arg value="3000000"></constructor-arg> -->
