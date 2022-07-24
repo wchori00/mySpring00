@@ -85,7 +85,6 @@
 		<property name="greeting"><value>Hello, </value></property>
 	</bean>
 
-	
 	<bean class="tommy.spring.lifecycle.CustomBeanPostProcessor"/> -->
 
 <!--	<bean id="collectionBean" class="tommy.spring.collection.CollectionBean">
