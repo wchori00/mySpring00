@@ -23,6 +23,9 @@ public class LoginController {
 //	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 	public String login(UserVO vo, UserDAO userDAO, HttpSession session) {
 		System.out.println("로그인 인증 처리");
+		if(vo.getId() == null || vo.getId().equals("")) {
+			throw new IllegalAccessError("아이디는 반드시 입력해야 합니다");
+		}
 		// 1. 사용자 입력 정보 추출
 //		String id = request.getParameter("id");
 //		String password = request.getParameter("password");		
