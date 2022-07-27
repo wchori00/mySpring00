@@ -3,6 +3,7 @@ package tommy.spring.web.board;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,6 +22,26 @@ import tommy.spring.web.board.impl.BoardDAO;
 public class BoardController {
 	@Autowired
 	private BoardService boardService;
+	
+	@RequestMapping("/dataTransformJSON.do")
+	@ResponseBody
+	public List<BoardVO> dataTransform2(BoardVO vo) {
+		vo.setSearchCondition("TITLE");
+		vo.setSearchKeyword("");
+		List<BoardVO> boardList = boardService.getBoardList(vo);
+		return boardList;
+	}
+	
+	@RequestMapping("/dataTransformXML.do")
+	@ResponseBody
+	public BoardListVO dataTransform(BoardVO vo) {
+		vo.setSearchCondition("TITLE");
+		vo.setSearchKeyword("");
+		List<BoardVO> boardList = boardService.getBoardList(vo);
+		BoardListVO boardListVO = new BoardListVO();
+		boardListVO.setBoardList(boardList);
+		return boardListVO;
+	}
 	
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
@@ -50,7 +72,7 @@ public class BoardController {
 		System.out.println("등록일: " + vo.getRegDate());
 		System.out.println("조회수: " + vo.getCnt());
 		System.out.println("작성자 이름: " + vo.getWriter());
-		boardDAO.updateBoard(vo);
+		boardService.updateBoard(vo);
 		return "getBoardList.do";
 	}
 	
@@ -64,7 +86,8 @@ public class BoardController {
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardVO vo, BoardDAO boardDAO, Model model) {
 		System.out.println("글 상세 보기 처리");
-		model.addAttribute("board", boardDAO.getBoard(vo));
+//		model.addAttribute("board", boardDAO.getBoard(vo));
+		model.addAttribute("board", boardService.getBoard(vo));
 		return "getBoard.jsp";
 	}
 	

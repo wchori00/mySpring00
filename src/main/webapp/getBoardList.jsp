@@ -5,6 +5,7 @@
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%
 	
 
@@ -62,7 +63,7 @@
 <td>${board.seq }</td>
 <td><a href="getBoard.do?seq=${board.seq }">${board.title }</a></td>
 <td>${board.writer }</td>
-<td>${board.regDate }</td>
+<td><fmt:formatDate value="${board.regDate }" pattern="yyyy-MM-dd"/></td>
 <td>${board.cnt }</td>
 </tr>
 </c:forEach>
