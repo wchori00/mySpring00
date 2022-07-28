@@ -1,5 +1,6 @@
 package tommy.spring.web.board.impl;
 
+import java.beans.Transient;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +12,14 @@ import tommy.spring.web.board.BoardVO;
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
 	@Autowired
-	private BoardDAOMybatis boardDAO;
+//	private BoardDAOMybatis boardDAO;
 //	private BoardDAO boardDAO;
 //	private BoardDAOSpring boardDAO;
+	private BoardDAOJPA boardDAO;
 	
 	
 	@Override
+//	@Transient
 	public void insertBoard(BoardVO vo) {
 		//if(vo.getSeq() == 0) {
 		//	throw new IllegalArgumentException("0번 글은 등록할 수 없습니다");
@@ -26,10 +29,12 @@ public class BoardServiceImpl implements BoardService {
 		boardDAO.insertBoard(vo);
 	}
 	@Override
+//	@Transient
 	public void updateBoard(BoardVO vo) {
 		boardDAO.updateBoard(vo);
 	}
 	@Override
+//	@Transient
 	public void deleteBoard(BoardVO vo) {
 		boardDAO.deleteBoard(vo);
 	}
